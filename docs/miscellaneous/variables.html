@@ -1,0 +1,487 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>MoMoMa Backend Docs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#app" title="client/src/main.ts" ><b>app</b>&nbsp;&nbsp;&nbsp;(client/.../main.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#bcrypt" title="src/common/util_services/password.service.ts" ><b>bcrypt</b>&nbsp;&nbsp;&nbsp;(src/.../password.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#get_cookie" title="client/src/util/cookie.ts" ><b>get_cookie</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#get_cookie_all" title="client/src/util/cookie.ts" ><b>get_cookie_all</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#nodemailer" title="src/common/util_services/email.service.ts" ><b>nodemailer</b>&nbsp;&nbsp;&nbsp;(src/.../email.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#remove_cookie" title="client/src/util/cookie.ts" ><b>remove_cookie</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#router" title="client/src/router/router.ts" ><b>router</b>&nbsp;&nbsp;&nbsp;(client/.../router.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#set_cookie" title="client/src/util/cookie.ts" ><b>set_cookie</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#store" title="client/src/util/store.ts" ><b>store</b>&nbsp;&nbsp;&nbsp;(client/.../store.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#User" title="src/common/decorators/user.decorator.ts" ><b>User</b>&nbsp;&nbsp;&nbsp;(src/.../user.decorator.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>client/src/main.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="app"></a>
+                    <span class="name">
+                        <span ><b>app</b></span>
+                        <a href="#app"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createApp(App)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/util_services/password.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bcrypt"></a>
+                    <span class="name">
+                        <span ><b>bcrypt</b></span>
+                        <a href="#bcrypt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>require(&#x27;bcrypt&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/util/cookie.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get_cookie"></a>
+                    <span class="name">
+                        <span ><b>get_cookie</b></span>
+                        <a href="#get_cookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(key: string) &#x3D;&gt; {
+  return Cookies.get(key)
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="get_cookie_all"></a>
+                    <span class="name">
+                        <span ><b>get_cookie_all</b></span>
+                        <a href="#get_cookie_all"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {
+  return Cookies.get()
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove_cookie"></a>
+                    <span class="name">
+                        <span ><b>remove_cookie</b></span>
+                        <a href="#remove_cookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(key: string) &#x3D;&gt; {
+  Cookies.remove(key)
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="set_cookie"></a>
+                    <span class="name">
+                        <span ><b>set_cookie</b></span>
+                        <a href="#set_cookie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(key: string, value: string) &#x3D;&gt; {
+  Cookies.set(key, value, {
+    expires: 7,
+  })
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/util_services/email.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nodemailer"></a>
+                    <span class="name">
+                        <span ><b>nodemailer</b></span>
+                        <a href="#nodemailer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>require(&quot;nodemailer&quot;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/router/router.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="router"></a>
+                    <span class="name">
+                        <span ><b>router</b></span>
+                        <a href="#router"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: &#x27;/&#x27;,
+      name: &#x27;home&#x27;,
+      component: HomeView
+    },
+    {
+      path: &#x27;/login/:challenge?&#x27;,
+      name: &#x27;login&#x27;,
+      component: LoginView
+    },
+    {
+      path: &#x27;/reset&#x27;,
+      name: &#x27;reset_request&#x27;,
+      component: ResetRequestView
+    },
+    {
+      path: &#x27;/reset/:challenge&#x27;,
+      name: &#x27;reset&#x27;,
+      component: ResetView
+    },
+    {
+      path: &#x27;/register&#x27;,
+      name: &#x27;register&#x27;,
+      component: RegisterView
+    },
+    {
+      path: &#x27;/profile&#x27;,
+      name: &#x27;profile&#x27;,
+      component: ProfileView
+    },
+    {
+      path: &#x27;/history&#x27;,
+      name: &#x27;history&#x27;,
+      component: HistoryView
+    },
+    {
+      path: &#x27;/privacy&#x27;,
+      name: &#x27;privacy&#x27;,
+      component: PrivacyView
+    }
+  ]
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>client/src/util/store.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="store"></a>
+                    <span class="name">
+                        <span ><b>store</b></span>
+                        <a href="#store"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>reactive({
+  logged_in: false,
+  loading: false,
+  alert: {
+    show: false,
+    msg: &quot;&quot;,
+    type: &quot;success&quot;,
+  },
+
+  update_loading(loading: boolean) {
+    this.loading &#x3D; loading;
+  },
+
+  async update_logged_in() {
+    const check &#x3D; (await fetch(&quot;/api/user/check&quot;, {
+      method: &quot;GET&quot;,
+      headers: {
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+        &quot;Authorization&quot;: &quot;Bearer &quot; + (get_cookie(&quot;access_token&quot;) ?? &quot;&quot;),
+      }
+    }));
+    const data &#x3D; await check.text()
+    this.logged_in &#x3D; data &#x3D;&#x3D;&#x3D; &quot;true&quot;
+  },
+
+  generate_type(http_code: number) {
+    if (http_code &gt;&#x3D; 200 &amp;&amp; http_code &lt; 300) {
+      return &quot;success&quot;;
+    } else if (http_code &gt;&#x3D; 400 &amp;&amp; http_code &lt; 500) {
+      return &quot;warning&quot;;
+    } else if (http_code &gt;&#x3D; 500 &amp;&amp; http_code &lt; 600) {
+      return &quot;danger&quot;;
+    } else {
+      return &quot;info&quot;;
+    }
+  },
+
+  show_alert(type: string, msg: string) {
+    this.alert.type &#x3D; type;
+    this.alert.msg &#x3D; msg;
+    this.alert.show &#x3D; true;
+  },
+
+  hide_alert() {
+    this.alert.show &#x3D; false;
+  }
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/user.decorator.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="User"></a>
+                    <span class="name">
+                        <span ><b>User</b></span>
+                        <a href="#User"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: unknown, ctx: ExecutionContext) : JwtUser &#x3D;&gt; {
+    const request &#x3D; ctx.switchToHttp().getRequest();
+    return request.user;
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
