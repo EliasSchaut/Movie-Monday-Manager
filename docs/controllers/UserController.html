@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -158,7 +158,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>change_password(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../interfaces/PasswordNewDto.html" target="_self">PasswordNewDto</a>)</code>
+                    <code>change_password(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/PasswordNewDto.html" target="_self">PasswordNewDto</a>)</code>
                 </td>
             </tr>
 
@@ -166,22 +166,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post(&#x27;password&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST update password&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;password&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/routes/user/user.controller.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/routes/user/user.controller.ts:75</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST update password</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -210,7 +208,7 @@
                                 <tr>
                                     <td>body</td>
                                     <td>
-                                                <code><a href="../interfaces/PasswordNewDto.html" target="_self" >PasswordNewDto</a></code>
+                                                <code><a href="../classes/PasswordNewDto.html" target="_self" >PasswordNewDto</a></code>
                                     </td>
 
                                     <td>
@@ -225,7 +223,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -250,7 +248,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>change_username(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../interfaces/LoginDto.html" target="_self">LoginDto</a>)</code>
+                    <code>change_username(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
                 </td>
             </tr>
 
@@ -258,22 +256,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post(&#x27;username&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST update username (email)&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;username&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/routes/user/user.controller.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/routes/user/user.controller.ts:67</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST update username (email)</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -302,7 +298,7 @@
                                 <tr>
                                     <td>body</td>
                                     <td>
-                                                <code><a href="../interfaces/LoginDto.html" target="_self" >LoginDto</a></code>
+                                                <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
                                     </td>
 
                                     <td>
@@ -317,7 +313,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -350,22 +346,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get(&#x27;check&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET check if bearer token is valid&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;check&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/routes/user/user.controller.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/routes/user/user.controller.ts:83</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE GET check if bearer token is valid</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>unknown</code>
@@ -390,7 +384,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>delete(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../interfaces/PasswordDto.html" target="_self">PasswordDto</a>)</code>
+                    <code>delete(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/PasswordDto.html" target="_self">PasswordDto</a>)</code>
                 </td>
             </tr>
 
@@ -398,22 +392,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Delete()<br /></code>
+                    <code>@ApiOperation({summary: &#x27;DELETE user&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/routes/user/user.controller.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/routes/user/user.controller.ts:51</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE DELETE user</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -442,7 +434,7 @@
                                 <tr>
                                     <td>body</td>
                                     <td>
-                                                <code><a href="../interfaces/PasswordDto.html" target="_self" >PasswordDto</a></code>
+                                                <code><a href="../classes/PasswordDto.html" target="_self" >PasswordDto</a></code>
                                     </td>
 
                                     <td>
@@ -457,7 +449,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -482,7 +474,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>email_opt_in(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../interfaces/EmailOptInDto.html" target="_self">EmailOptInDto</a>)</code>
+                    <code>email_opt_in(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/EmailOptInDto.html" target="_self">EmailOptInDto</a>)</code>
                 </td>
             </tr>
 
@@ -490,22 +482,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post(&#x27;email_opt_in&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST update email_opt_in (set/unset on newsletter)&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;email_opt_in&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/routes/user/user.controller.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/routes/user/user.controller.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST update email_opt_in (set/unset on newsletter)</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -534,7 +524,7 @@
                                 <tr>
                                     <td>body</td>
                                     <td>
-                                                <code><a href="../interfaces/EmailOptInDto.html" target="_self" >EmailOptInDto</a></code>
+                                                <code><a href="../classes/EmailOptInDto.html" target="_self" >EmailOptInDto</a></code>
                                     </td>
 
                                     <td>
@@ -549,7 +539,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -582,7 +572,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET user data&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
                 </td>
             </tr>
 
@@ -596,8 +586,6 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE GET user data</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -662,22 +650,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get(&#x27;data&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET all saved user data&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;data&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">src/routes/user/user.controller.ts:70</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/routes/user/user.controller.ts:59</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE GET all saved user data</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -742,22 +728,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:user_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET public user data from given user_id&#x27;})<br />@Get(&#x27;:user_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">src/routes/user/user.controller.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/routes/user/user.controller.ts:89</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PUBLIC GET public user data from given user_id</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -814,7 +798,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update_profile(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../interfaces/ProfileDto.html" target="_self">ProfileDto</a>)</code>
+                    <code>update_profile(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/ProfileDto.html" target="_self">ProfileDto</a>)</code>
                 </td>
             </tr>
 
@@ -822,22 +806,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post()<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST update profile information (name, gravatar)&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post()<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/routes/user/user.controller.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/routes/user/user.controller.ts:35</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST update profile information (name, gravatar)</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -866,7 +848,7 @@
                                 <tr>
                                     <td>body</td>
                                     <td>
-                                                <code><a href="../interfaces/ProfileDto.html" target="_self" >ProfileDto</a></code>
+                                                <code><a href="../classes/ProfileDto.html" target="_self" >ProfileDto</a></code>
                                     </td>
 
                                     <td>
@@ -881,7 +863,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -906,103 +888,82 @@ import { PasswordDto } from &quot;../../types/user.dto/password.dto&quot;;
 import { LoginDto } from &quot;../../types/user.dto/login.dto&quot;;
 import { PasswordNewDto } from &quot;../../types/user.dto/password_new.dto&quot;;
 import { ResDto } from &quot;../../types/res.dto&quot;;
+import { ApiBearerAuth, ApiOperation, ApiTags } from &quot;@nestjs/swagger&quot;;
 
 /**
  * Controller for user related routes
  */
+@ApiTags(&#x27;user&#x27;)
 @Controller(&#x27;user&#x27;)
 export class UserController {
 
   constructor(private readonly userService: UserService) {}
 
-  /**
-   * PRIVATE GET user data
-   * @param user
-   */
+  @ApiOperation({ summary: &#x27;GET user data&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
   async get(@User() user: JwtUser) {
     return await this.userService.get(Number(user.id));
   }
 
-  /**
-   * PRIVATE POST update profile information (name, gravatar)
-   * @param user
-   * @param body
-   */
+  @ApiOperation({ summary: &#x27;POST update profile information (name, gravatar)&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
   async update_profile(@User() user: JwtUser, @Body() body: ProfileDto): Promise&lt;ResDto&gt; {
     return await this.userService.change_profile(Number(user.id), body);
   }
 
-  /**
-   * PRIVATE POST update email_opt_in (set/unset on newsletter)
-   * @param user
-   * @param body
-   */
+  @ApiOperation({ summary: &#x27;POST update email_opt_in (set/unset on newsletter)&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;email_opt_in&#x27;)
   async email_opt_in(@User() user: JwtUser, @Body() body: EmailOptInDto): Promise&lt;ResDto&gt; {
     return await this.userService.email_opt_in(Number(user.id), Boolean(body.email_opt_in));
   }
 
-  /**
-   * PRIVATE DELETE user
-   * @param user
-   * @param body
-   */
+  @ApiOperation({ summary: &#x27;DELETE user&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete()
   async delete(@User() user: JwtUser, @Body() body: PasswordDto): Promise&lt;ResDto&gt; {
     return await this.userService.delete(Number(user.id), body.password);
   }
 
-  /**
-   * PRIVATE GET all saved user data
-   * @param user
-   */
+  @ApiOperation({ summary: &#x27;GET all saved user data&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;data&#x27;)
   async get_data(@User() user: JwtUser) {
     return await this.userService.get_user_data(Number(user.id));
   }
 
-  /**
-   * PRIVATE POST update username (email)
-   * @param user
-   * @param body
-   */
+  @ApiOperation({ summary: &#x27;POST update username (email)&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;username&#x27;)
   async change_username(@User() user: JwtUser, @Body() body: LoginDto): Promise&lt;ResDto&gt; {
     return await this.userService.change_username(Number(user.id), body.username, body.password);
   }
 
-  /**
-   * PRIVATE POST update password
-   * @param user
-   * @param body
-   */
+  @ApiOperation({ summary: &#x27;POST update password&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;password&#x27;)
   async change_password(@User() user: JwtUser, @Body() body: PasswordNewDto): Promise&lt;ResDto&gt; {
     return await this.userService.change_password(Number(user.id), body.password, body.password_old);
   }
 
-  /**
-   * PRIVATE GET check if bearer token is valid
-   */
+  @ApiOperation({ summary: &#x27;GET check if bearer token is valid&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;check&#x27;)
   async check_profile() {
     return true;
   }
 
-  /**
-   * PUBLIC GET public user data from given user_id
-   * @param user_id
-   */
+  @ApiOperation({ summary: &#x27;GET public user data from given user_id&#x27; })
   @Get(&#x27;:user_id&#x27;)
   async get_user(@Param(&#x27;user_id&#x27;) user_id: string) {
     return await this.userService.get_public(Number(user_id));

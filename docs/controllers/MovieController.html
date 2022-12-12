@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -154,22 +154,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;DEL remove a movie from the movie database by a given imdb_id, when the given user is the proposer&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">src/routes/movie/movie.controller.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/routes/movie/movie.controller.ts:60</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE DELETE remove a movie from the movie database by a given imdb_id, when the given user is the proposer</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -213,7 +211,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../interfaces/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -246,7 +244,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;all&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET all movies with its related data&#x27;})<br />@Get(&#x27;all&#x27;)<br /></code>
                 </td>
             </tr>
 
@@ -260,8 +258,6 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PUBLIC GET all movies with its related data</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/MovieExtType.html" target="_self" >Promise&lt;MovieExtType[]&gt;</a></code>
@@ -294,22 +290,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;history&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET all movies from history with its related data&#x27;})<br />@Get(&#x27;history&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/routes/movie/movie.controller.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/routes/movie/movie.controller.ts:36</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PUBLIC GET all movies from history with its related data</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>    <code>Promise&lt;History[]&gt;</code>
@@ -342,22 +336,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET information about a specific movie given by its imdb_id&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/routes/movie/movie.controller.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/routes/movie/movie.controller.ts:44</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE GET information about a specific movie given by its imdb_id</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -422,22 +414,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;watchlist&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET all movies from watchlist with its related data&#x27;})<br />@Get(&#x27;watchlist&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/routes/movie/movie.controller.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/routes/movie/movie.controller.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PUBLIC GET all movies from watchlist with its related data</p>
-</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/WatchlistExtType.html" target="_self" >Promise&lt;WatchlistExtType[]&gt;</a></code>
@@ -470,24 +460,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST add a movie to the movie database by a given imdb_id. This is only possible if the movie is not already in the movie, watchlist or history database! The given user will be the proposer of the movie&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/routes/movie/movie.controller.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/routes/movie/movie.controller.ts:52</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST add a movie to the movie database by a given imdb_id.
-This is only possible if the movie is not already in the movie, watchlist or history database!
-The given user will be the proposer of the movie.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -546,6 +532,7 @@ The given user will be the proposer of the movie.</p>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Delete, Get, Param, Post, UseGuards } from &quot;@nestjs/common&quot;;
+import { ApiBearerAuth, ApiOperation, ApiTags } from &quot;@nestjs/swagger&quot;;
 import { MovieService } from &quot;./movie.service&quot;;
 import { JwtAuthGuard } from &quot;../auth/jwt-auth.guard&quot;;
 import { User } from &quot;../../common/decorators/user.decorator&quot;;
@@ -553,69 +540,54 @@ import { JwtUser } from &quot;../../types/jwtuser.type&quot;;
 import { MovieExtType } from &quot;../../types/movie.types/movie_ext.type&quot;;
 import { WatchlistExtType } from &quot;../../types/movie.types/watchlist_ext.type&quot;;
 import { History, Vote, Movie } from &quot;@prisma/client&quot;;
-import imdb from &quot;imdb-api&quot;;
 import { ResDto } from &quot;../../types/res.dto&quot;;
+import imdb from &quot;imdb-api&quot;;
 
 /**
  * Controller for movie related routes
  */
+@ApiTags(&#x27;movie&#x27;)
 @Controller(&#x27;movie&#x27;)
 export class MovieController {
 
   constructor(private readonly movieService: MovieService) {}
 
-  /**
-   * PUBLIC GET all movies with its related data
-   */
+  @ApiOperation({ summary: &#x27;GET all movies with its related data&#x27; })
   @Get(&#x27;all&#x27;)
   async get_all_media() : Promise&lt;MovieExtType[]&gt; {
     return await this.movieService.get_all()
   }
 
-  /**
-   * PUBLIC GET all movies from watchlist with its related data
-   */
+  @ApiOperation({ summary: &#x27;GET all movies from watchlist with its related data&#x27; })
   @Get(&#x27;watchlist&#x27;)
   async get_watchlist() : Promise&lt;WatchlistExtType[]&gt; {
     return await this.movieService.get_watchlist()
   }
 
-  /**
-   * PUBLIC GET all movies from history with its related data
-   */
+  @ApiOperation({ summary: &#x27;GET all movies from history with its related data&#x27; })
   @Get(&#x27;history&#x27;)
   async get_history() : Promise&lt;History[]&gt; {
     return await this.movieService.get_history()
   }
 
-  /**
-   * PRIVATE GET information about a specific movie given by its imdb_id
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &#x27;GET information about a specific movie given by its imdb_id&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(&#x27;:imdb_id&#x27;)
   async get_media(@Param(&#x27;imdb_id&#x27;) imdb_id: string) : Promise&lt;imdb.Movie&gt; {
     return await this.movieService.get(imdb_id)
   }
 
-  /**
-   * PRIVATE POST add a movie to the movie database by a given imdb_id.
-   * This is only possible if the movie is not already in the movie, watchlist or history database!
-   * The given user will be the proposer of the movie.
-   * @param user
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &#x27;POST add a movie to the movie database by a given imdb_id. This is only possible if the movie is not already in the movie, watchlist or history database! The given user will be the proposer of the movie&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;:imdb_id&#x27;)
   async post_media(@User() user: JwtUser, @Param(&#x27;imdb_id&#x27;) imdb_id: string): Promise&lt;{movie: Movie, vote: Vote}&gt; {
-    return await this.movieService.save(imdb_id, user.id)
+    return await this.movieService.save(imdb_id, Number(user.id))
   }
 
-  /**
-   * PRIVATE DELETE remove a movie from the movie database by a given imdb_id, when the given user is the proposer
-   * @param user
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &quot;DEL remove a movie from the movie database by a given imdb_id, when the given user is the proposer&quot; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(&#x27;:imdb_id&#x27;)
   async delete_media(@User() user: JwtUser, @Param(&#x27;imdb_id&#x27;) imdb_id: string) : Promise&lt;ResDto&gt; {

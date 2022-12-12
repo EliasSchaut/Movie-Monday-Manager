@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="./" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="./" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -34,30 +34,56 @@
 <p><img src="https://img.shields.io/github/v/release/EliasSchaut/Movie-Monday-Manager?color=purple&include_prereleases&label=Release" alt="" class="img-responsive">
 <img src="https://img.shields.io/github/license/EliasSchaut/Movie-Monday-Manager" alt="" class="img-responsive"></p>
 <h1 id="movie-monday-manager">Movie Monday Manager</h1>
-<p>A full stack management application for voting movies for weekly movie events.</p>
+<p>A full stack management application for voting movies for cyclic movie events.</p>
 <h2 id="features">Features</h2>
 <ul>
-<li>Account-registration with email verification</li>
-<li>Users can vote, add and remove movies</li>
-<li>Users can manage own profile</li>
-<li>Clean and responsive Bootstrap-UI</li>
-<li>100% useable without client (via REST-API)</li>
-<li><strong>(soon)</strong> automatic management of voted movies around movie events</li>
-<li><strong>(soon)</strong> automatic notifications for movie events with the list of interested users</li>
+<li>account-registration with email verification</li>
+<li>users can vote, add and remove movies</li>
+<li>users can manage own profile</li>
+<li>clean and responsive Bootstrap-UI</li>
+<li>100% usable without client (via REST-API)</li>
+<li>automatic management of voted movies around movie events</li>
+<li>automatic notifications for movie events with the list of interested users</li>
 </ul>
 <h2 id="installation">Installation</h2>
 <ol>
 <li>You need <a href="https://nodejs.org/en/">node.js</a> installed (version 18.12.1 or newer).</li>
-<li>Download the <a href="https://github.com/EliasSchaut/Movie-Monday-Managerreleases">newest version</a> of the code</li>
+<li>Download the <a href="https://github.com/EliasSchaut/Movie-Monday-Manager/releases">newest version</a> of the code</li>
 <li>Rename the .env file from <code>.env.tmp</code> to <code>.env</code></li>
-<li>Open the configuration file (now <code>.env</code>) and set values.</li>
-<li>In <code>client</code> folder: run <code>npm install</code> and <code>npm run build</code></li>
-<li>In <code>prisma</code> folder: run prismas <code>migrate</code> command (e.g. <code>prisma migrate dev --name init</code>)</li>
-<li>In root folder: <code>npm install</code>.</li>
-<li>Run the server with <code>npm start</code>.</li>
+<li>Open the configuration file (now <code>.env</code>) and set values (see <a href="#configuration">config-section</a> below).</li>
+<li>Build the project with <code>npm run build:all</code></li>
+<li>Run the server with <code>npm run start:prod</code></li>
 </ol>
-<h2 id="dev-docs--api-docs">Dev-Docs &amp; API-Docs</h2>
-<p>This documentation is still work in progress.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The configuration file is located in the root directory of the project and is called <code>.env</code>. It will be validated on startup via the <a href="https://joi.dev/">Joi</a> library. To see the validation schema, see the <a href="./src/common/validation/config.validation.ts">config.validation.ts</a> file.</p>
+<h2 id="api-docs">API-Docs</h2>
+<p>This project is 100% usable without client via a REST-API!
+The routes start with the prefix <code>/api</code> (e.g. <code>http://[::1]:3000/api</code>). 
+The api is documented with <a href="https://swagger.io/">Swagger</a> at <code>/docs/api</code> route of the website (e.g. <code>http://[::1]:3000/docs/api</code>).</p>
+<h2 id="dev-docs">Dev-Docs</h2>
+<p>This small guide assumes, that you have already some knowledge about node.js and the used frameworks. 
+The whole project is written in <a href="https://www.typescriptlang.org/">Typescript</a>.</p>
+<h3 id="momomat-backend">MoMoMat (Backend)</h3>
+<p>The backend uses the <a href="https://nestjs.com/">NestJS</a> framework to handle the REST-API with all its corresponding services. It is also documented with <a href="https://compodoc.app/">compodoc</a> at <code>/docs/backend</code> route of the website (e.g. <code>http://[::1]:3000/docs/backend</code>).
+This project (<code>/src</code> folder) is dived into 3 main parts: 
+The routes (controllers) to handle incoming requests; 
+a common section with lots of usefully functions and classes to support the other parts; 
+and type definitions for internal data structures and data transmission objects (dto&#39;s).</p>
+<p>To run the backend in development mode, you need to <code>npm install</code> the dependencies and run <code>npm run start:dev</code> in the root folder of the project. Note, that the client has to be built via <code>npm run build:client</code> because the client is only statically served from the  <code>/client/dist</code> folder. So every change in the client has to be built to show up in the backend project. Also note, that the database should also be built (see <code>MoMoMat-DB</code> below). The backend can generate docs as static website by run <code>npm run build:docs</code> and shown by <code>npm run start:docs</code>. The backend itself can be build with <code>npm run build</code>. The build files are located in the <code>/dist</code> folder. The <code>npm run build:all</code> command can be used to build everything in with just one step.</p>
+<h3 id="momomat-client-frontend">MoMoMat-Client (Frontend)</h3>
+<p>The frontend uses the <a href="https://vuejs.org/">Vue.js</a> framework to handle the user interface. 
+It can be found in the <code>/client</code> folder.</p>
+<p>The frontend uses the <a href="https://router.vuejs.org/">Vue Router</a> defined in <code>/client/src/router</code> folder to handle the navigation between the different pages as singe page application. 
+The router shows different view components depending on the current route. These view components are defined in the <code>/client/src/views</code> folder. Some views use special components defined in the <code>/client/src/components</code> folder.</p>
+<p>To run the client in development mode, you need to <code>npm install</code> the dependencies and run <code>npm run dev</code> in the <code>/client</code> folder.
+But in this mode, the backend is disabled and the website cannot interact with any backend route. 
+To build the client for production, you need to run <code>npm run build</code> in the <code>/client</code> folder. The build files are located in the <code>/client/dist</code> folder.</p>
+<h3 id="momomat-db-database">MoMoMat-DB (Database)</h3>
+<p>The database use <a href="https://www.prisma.io/">Prisma</a> as ORM to handle the database connection and management. 
+Its database schema is defined in the <code>/prisma</code> folder. 
+Which database is used under the hood can be defined in the <code>.env</code> file.</p>
+<p>The scheme can be formatted with <code>npx prisma format</code> in <code>/prisma</code> folder. 
+A database can be created via <code>npx prisma migrate dev</code> from <code>/prisma</code> folder or <code>npm run build:db</code> from root folder. </p>
 
 
 

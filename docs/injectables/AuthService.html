@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -125,7 +125,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/routes/auth/auth.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/routes/auth/auth.service.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -226,8 +226,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:79</a></div>
                 </td>
             </tr>
 
@@ -297,8 +297,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:46</a></div>
                 </td>
             </tr>
 
@@ -368,8 +368,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:108</a></div>
                 </td>
             </tr>
 
@@ -451,8 +451,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:93</a></div>
                 </td>
             </tr>
 
@@ -515,15 +515,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>register(user: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>register(user: <a href="../classes/RegisterDto.html" target="_self">RegisterDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -546,7 +546,7 @@
                                 <tr>
                                     <td>user</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="../classes/RegisterDto.html" target="_self" >RegisterDto</a></code>
                                     </td>
 
                                     <td>
@@ -593,8 +593,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">src/routes/auth/auth.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/routes/auth/auth.service.ts:29</a></div>
                 </td>
             </tr>
 
@@ -673,6 +673,10 @@ import { PrismaClientKnownRequestError } from &quot;@prisma/client/runtime&quot;
 import { EmailService } from &quot;../../common/util_services/email.service&quot;;
 import { PasswordService } from &quot;../../common/util_services/password.service&quot;;
 import cuid from &quot;cuid&quot;;
+import { RegisterDto } from &quot;../../types/user.dto/register.dto&quot;;
+import { name_pattern } from &quot;../../common/validation/patterns/name.pattern&quot;;
+import { username_pattern } from &quot;../../common/validation/patterns/username.pattern&quot;;
+import { password_pattern } from &quot;../../common/validation/patterns/password.pattern&quot;;
 
 @Injectable()
 export class AuthService {
@@ -708,7 +712,11 @@ export class AuthService {
     };
   }
 
-  async register(user: any) {
+  async register(user: RegisterDto) {
+    if (!name_pattern.test(user.name) || !username_pattern.test(user.username) || !password_pattern.test(user.password)) {
+      throw new ForbiddenException(&#x27;Invalid input. Your inputs failed to pass the validation checks.&#x27;);
+    }
+
     const payload &#x3D; { username: user.username, name: user.name, password: user.password };
     try {
       const userDB &#x3D; await this.userDBService.create(payload);
@@ -760,6 +768,10 @@ export class AuthService {
   }
 
   async pw_reset(challenge: string, password: string) {
+    if (!password_pattern.test(password)) {
+      throw new ForbiddenException(&#x27;Invalid new password. Password must be minimum eight characters, at least one letter and one number!&#x27;);
+    }
+
     const user &#x3D; await this.userDBService.get({ challenge })
     if (user &amp;&amp; user.pw_reset) {
       const hashed_password &#x3D; await this.passwordService.hash(password);

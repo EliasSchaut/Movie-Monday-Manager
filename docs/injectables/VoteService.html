@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -69,6 +69,22 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#max_votes" >max_votes</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -117,7 +133,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/routes/vote/vote.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/routes/vote/vote.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -206,8 +222,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/routes/vote/vote.service.ts:14</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">src/routes/vote/vote.service.ts:16</a></div>
                 </td>
             </tr>
 
@@ -277,8 +293,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/routes/vote/vote.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/routes/vote/vote.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -348,8 +364,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="48"
-                            class="link-to-prism">src/routes/vote/vote.service.ts:48</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/routes/vote/vote.service.ts:50</a></div>
                 </td>
             </tr>
 
@@ -431,8 +447,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/routes/vote/vote.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/routes/vote/vote.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -493,6 +509,39 @@
         </tbody>
     </table>
 </section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="max_votes"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>max_votes</b></span>
+                        <a href="#max_votes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Number(process.env.MAX_VOTES)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/routes/vote/vote.service.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
 
     </div>
 
@@ -506,6 +555,8 @@ import { Movie, Prisma } from &quot;@prisma/client&quot;;
 
 @Injectable()
 export class VoteService {
+
+  private readonly max_votes &#x3D; Number(process.env.MAX_VOTES)
 
   constructor(private readonly movieDBService: MovieDBService,
               private readonly userDBService: UserDBService,
@@ -529,8 +580,8 @@ export class VoteService {
 
   async vote(imdb_id: string, user_id: number) {
     const num_of_votes &#x3D; await this.voteDBService.num_of(user_id)
-    if (num_of_votes &gt;&#x3D; Number(process.env.MAX_VOTES)) {
-      throw new ConflictException(&#x60;You have already voted for the maximum number (${process.env.MAX_VOTES}) of movies&#x60;)
+    if (num_of_votes &gt;&#x3D; this.max_votes) {
+      throw new ConflictException(&#x60;You have already voted for the maximum number of movies! You can only vote for ${this.max_votes} movies&#x60;)
     }
 
     const voteDB_data: Prisma.VoteCreateInput &#x3D; {

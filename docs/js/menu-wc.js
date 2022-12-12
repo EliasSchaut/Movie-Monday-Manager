@@ -15,7 +15,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
         <nav>
             <ul class="list">
                 <li class="title">
-                    <a href="index.html" data-type="index-link">MoMoMa Backend Docs</a>
+                    <a href="index.html" data-type="index-link">MoMoMat Backend Docs</a>
                 </li>
 
                 <li class="divider"></li>
@@ -373,6 +373,37 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </ul>
                         </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
+                            'data-target="#xs-classes-links"' }>
+                            <span class="icon ion-ios-paper"></span>
+                            <span>Classes</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                            <li class="link">
+                                <a href="classes/EmailOptInDto.html" data-type="entity-link" >EmailOptInDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/LoginDto.html" data-type="entity-link" >LoginDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/PasswordDto.html" data-type="entity-link" >PasswordDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/PasswordNewDto.html" data-type="entity-link" >PasswordNewDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ProfileDto.html" data-type="entity-link" >ProfileDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/RegisterDto.html" data-type="entity-link" >RegisterDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ResDto.html" data-type="entity-link" >ResDto</a>
+                            </li>
+                        </ul>
+                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
                                 'data-target="#xs-injectables-links"' }>
@@ -458,28 +489,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/EmailOptInDto.html" data-type="entity-link" >EmailOptInDto</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/JwtUser.html" data-type="entity-link" >JwtUser</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/LoginDto.html" data-type="entity-link" >LoginDto</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/MovieExtType.html" data-type="entity-link" >MovieExtType</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/PasswordDto.html" data-type="entity-link" >PasswordDto</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/PasswordNewDto.html" data-type="entity-link" >PasswordNewDto</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ProfileDto.html" data-type="entity-link" >ProfileDto</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ResDto.html" data-type="entity-link" >ResDto</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/WatchlistExtType.html" data-type="entity-link" >WatchlistExtType</a>

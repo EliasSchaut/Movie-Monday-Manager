@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -198,14 +198,25 @@
 import { AuthModule } from &#x27;./routes/auth/auth.module&#x27;;
 import { UserModule } from &#x27;./routes/user/user.module&#x27;;
 import { ServeStaticModule } from &quot;@nestjs/serve-static&quot;;
-import { join } from &quot;path&quot;;
 import { MovieModule } from &#x27;./routes/movie/movie.module&#x27;;
 import { VoteModule } from &#x27;./routes/vote/vote.module&#x27;;
 import { EventModule } from &quot;./common/event_service/event.module&quot;;
 import { ScheduleModule } from &quot;@nestjs/schedule&quot;;
+import { ConfigModule } from &quot;@nestjs/config&quot;;
+import { config_validation_schema } from &quot;./common/validation/config.validation&quot;;
+import { join } from &quot;path&quot;;
 
 @Module({
-  imports: [AuthModule, UserModule, MovieModule, VoteModule, EventModule,
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: config_validation_schema
+    }),
+    AuthModule, UserModule, MovieModule, VoteModule, EventModule,
+    ServeStaticModule.forRoot({
+      serveRoot: &#x27;/docs/backend&#x27;,
+      rootPath: join(__dirname, &#x27;..&#x27;, &#x27;docs&#x27;),
+    }),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, &#x27;..&#x27;, &#x27;client/dist&#x27;),
     }),

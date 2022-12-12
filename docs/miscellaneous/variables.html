@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -67,13 +67,31 @@
                             <a href="#bcrypt" title="src/common/util_services/password.service.ts" ><b>bcrypt</b>&nbsp;&nbsp;&nbsp;(src/.../password.service.ts)</a>
                         </li>
                         <li>
+                            <a href="#config_validation_schema" title="src/common/validation/config.validation.ts" ><b>config_validation_schema</b>&nbsp;&nbsp;&nbsp;(src/.../config.validation.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#cron_pattern" title="src/common/validation/patterns/cron.pattern.ts" ><b>cron_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../cron.pattern.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#discord_webhook_pattern" title="src/common/validation/patterns/discord_webhook.pattern.ts" ><b>discord_webhook_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../discord_webhook.pattern.ts)</a>
+                        </li>
+                        <li>
                             <a href="#get_cookie" title="client/src/util/cookie.ts" ><b>get_cookie</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
                         </li>
                         <li>
                             <a href="#get_cookie_all" title="client/src/util/cookie.ts" ><b>get_cookie_all</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
                         </li>
                         <li>
+                            <a href="#imdb_id_pattern" title="src/common/validation/patterns/imdb_id.pattern.ts" ><b>imdb_id_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../imdb_id.pattern.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#name_pattern" title="src/common/validation/patterns/name.pattern.ts" ><b>name_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../name.pattern.ts)</a>
+                        </li>
+                        <li>
                             <a href="#nodemailer" title="src/common/util_services/email.service.ts" ><b>nodemailer</b>&nbsp;&nbsp;&nbsp;(src/.../email.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#password_pattern" title="src/common/validation/patterns/password.pattern.ts" ><b>password_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../password.pattern.ts)</a>
                         </li>
                         <li>
                             <a href="#remove_cookie" title="client/src/util/cookie.ts" ><b>remove_cookie</b>&nbsp;&nbsp;&nbsp;(client/.../cookie.ts)</a>
@@ -88,7 +106,13 @@
                             <a href="#store" title="client/src/util/store.ts" ><b>store</b>&nbsp;&nbsp;&nbsp;(client/.../store.ts)</a>
                         </li>
                         <li>
+                            <a href="#" title="src/main.ts" ><b></b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</a>
+                        </li>
+                        <li>
                             <a href="#User" title="src/common/decorators/user.decorator.ts" ><b>User</b>&nbsp;&nbsp;&nbsp;(src/.../user.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#username_pattern" title="src/common/validation/patterns/username.pattern.ts" ><b>username_pattern</b>&nbsp;&nbsp;&nbsp;(src/.../username.pattern.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -136,6 +160,120 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>require(&#x27;bcrypt&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/config.validation.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="config_validation_schema"></a>
+                    <span class="name">
+                        <span ><b>config_validation_schema</b></span>
+                        <a href="#config_validation_schema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Joi.object({
+  PROJECT_NAME: Joi.string().required()
+    .description(&#x27;The name of the project&#x27;),
+  FRONTEND_URL: Joi.string().required().uri()
+    .description(&#x27;The URL of the client application (frontend). This is used for CORS and the email confirmation link&#x27;),
+  PORT: Joi.number().required().default(&quot;3000&quot;).port()
+    .description(&#x27;The port the server should listen on&#x27;),
+
+  DATABASE_URL: Joi.string().required().default(&quot;file:./dev.db&quot;)
+    .description(&#x27;The URL of the database&#x27;),
+  JWT_SECRET: Joi.string().required().default(&quot;secret&quot;)
+    .description(&#x27;The secret used to sign the JWT tokens. The JWT tokens are used to authenticate the users&#x27;),
+  JWT_EXPIRATION: Joi.string().required().default(&quot;2h&quot;)
+    .description(&#x27;The expiration time of the JWT tokens&#x27;),
+  OMDB_API_KEY: Joi.string().required().token()
+    .description(&#x27;The API key for the OMDB API. Request a free key at https://www.omdbapi.com/apikey.aspx&#x27;),
+  MAX_VOTES: Joi.number().required().default(&quot;20&quot;)
+    .description(&#x27;The maximum number of votes a user can cast in total for all movies&#x27;),
+  MAX_PROPOSEABLE_MOVIES: Joi.number().required().default(&quot;5&quot;)
+    .description(&#x27;The maximum number of movies a user can propose&#x27;),
+
+  SCHEDULE_WATCHLIST: Joi.string().required().default(&quot;0 15 * * 1&quot;).pattern(cron_pattern)
+    .description(&#x27;The cron pattern for the schedule that creates the watchlist for new movies and sends notifications per mail and Discord webhook&#x27;),
+  SCHEDULE_START: Joi.string().required().default(&quot;0 19 * * 1&quot;).pattern(cron_pattern)
+    .description(&#x27;The cron pattern for the beginning of the movie event. This value is used to calculate the start times of the movies in the watchlist&#x27;),
+  SCHEDULE_HISTORY: Joi.string().required().default(&quot;45 23 * * 1&quot;).pattern(cron_pattern)
+    .description(&#x27;The cron pattern for the schedule that creates the history for the movies in the watchlist and clears the watchlist&#x27;),
+  PAUSE_TIME_MIN: Joi.number().required().default(&quot;15&quot;)
+    .description(&#x27;The minimum pause time between two movies in minutes&#x27;),
+  NUM_OF_MOVIES: Joi.number().required().default(&quot;2&quot;)
+    .description(&#x27;The number of movies that will be in the watchlist at the same time&#x27;),
+
+  EMAIL_HOST: Joi.string().required().domain()
+    .description(&#x27;The host of the SMTP server used to send emails&#x27;),
+  EMAIL_PORT: Joi.number().required().default(&quot;587&quot;)
+    .description(&#x27;The port of the SMTP server used to send emails&#x27;),
+  EMAIL_HOST_USER: Joi.string().required().email()
+    .description(&#x27;The username of the SMTP server used to send emails&#x27;),
+  EMAIL_HOST_PASSWORD: Joi.string().required()
+    .description(&#x27;The password of the SMTP server used to send emails&#x27;),
+
+  DISCORD_ENABLE: Joi.boolean().required().default(&quot;false&quot;)
+    .description(&#x27;Whether the Discord webhook should be used to send notifications&#x27;),
+  DISCORD_WEBHOOK_URL: Joi.string().when(&#x27;DISCORD_ENABLE&#x27;, { is: true, then: Joi.required() }).pattern(discord_webhook_pattern)
+    .description(&#x27;The URL of the Discord webhook used to send notifications. This is optional if DISCORD_ENABLE is false&#x27;),
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/patterns/cron.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cron_pattern"></a>
+                    <span class="name">
+                        <span ><b>cron_pattern</b></span>
+                        <a href="#cron_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/(@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\d+(ns|us|µs|ms|s|m|h))+)|((((\d+,)+\d+|(\d+(\/|-)\d+)|\d+|\*) ?){5,7})/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/patterns/discord_webhook.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="discord_webhook_pattern"></a>
+                    <span class="name">
+                        <span ><b>discord_webhook_pattern</b></span>
+                        <a href="#discord_webhook_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^https:\/\/discord.com\/api\/webhooks\/[0-9]+\/.+$/</code>
                     </td>
                 </tr>
 
@@ -236,6 +374,52 @@
         </tbody>
     </table>
 </section>
+    <h3>src/common/validation/patterns/imdb_id.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imdb_id_pattern"></a>
+                    <span class="name">
+                        <span ><b>imdb_id_pattern</b></span>
+                        <a href="#imdb_id_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^tt[0-9]+$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/patterns/name.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="name_pattern"></a>
+                    <span class="name">
+                        <span ><b>name_pattern</b></span>
+                        <a href="#name_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^[A-Z].{2,20}$/</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/common/util_services/email.service.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -252,6 +436,29 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>require(&quot;nodemailer&quot;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/patterns/password.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="password_pattern"></a>
+                    <span class="name">
+                        <span ><b>password_pattern</b></span>
+                        <a href="#password_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^(?&#x3D;.*\d)(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*[a-zA-Z]).{8,}$/</code>
                     </td>
                 </tr>
 
@@ -316,6 +523,11 @@
       path: &#x27;/privacy&#x27;,
       name: &#x27;privacy&#x27;,
       component: PrivacyView
+    },
+    {
+      path: &#x27;/docs&#x27;,
+      name: &#x27;docs&#x27;,
+      component: DocsView
     }
   ]
 })</code>
@@ -395,6 +607,29 @@
         </tbody>
     </table>
 </section>
+    <h3>src/main.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name=""></a>
+                    <span class="name">
+                        <span ><b></b></span>
+                        <a href="#"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>require(&#x27;./../package.json&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>src/common/decorators/user.decorator.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -416,6 +651,29 @@
     return request.user;
   },
 )</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/validation/patterns/username.pattern.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="username_pattern"></a>
+                    <span class="name">
+                        <span ><b>username_pattern</b></span>
+                        <a href="#username_pattern"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/</code>
                     </td>
                 </tr>
 

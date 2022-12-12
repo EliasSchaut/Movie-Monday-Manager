@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -146,22 +146,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET number of votes for a movie&#x27;})<br />@Get(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/routes/vote/vote.controller.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/routes/vote/vote.controller.ts:28</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PUBLIC GET number of votes for a movie</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -226,7 +224,7 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET imdb_ids for the movies, the given user voted for&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Get()<br /></code>
                 </td>
             </tr>
 
@@ -240,8 +238,6 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE GET imdb_ids for the movies, the given user voted for</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -306,22 +302,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Post(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST vote for a movie&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Post(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/routes/vote/vote.controller.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/routes/vote/vote.controller.ts:36</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE POST vote for a movie</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -398,22 +392,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;:imdb_id&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;DELETE unvote for a movie&#x27;})<br />@ApiBearerAuth()<br />@UseGuards(JwtAuthGuard)<br />@Delete(&#x27;:imdb_id&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/routes/vote/vote.controller.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/routes/vote/vote.controller.ts:44</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>PRIVATE DELETE unvote for a movie</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -477,50 +469,41 @@ import { VoteService } from &quot;./vote.service&quot;;
 import { User } from &quot;../../common/decorators/user.decorator&quot;;
 import { JwtUser } from &quot;../../types/jwtuser.type&quot;;
 import { Vote } from &quot;@prisma/client&quot;;
+import { ApiBearerAuth, ApiOperation, ApiTags } from &quot;@nestjs/swagger&quot;;
 
 /**
  * Controller for the vote routes
  */
+@ApiTags(&#x27;vote&#x27;)
 @Controller(&#x27;vote&#x27;)
 export class VoteController {
 
   constructor(private readonly voteService: VoteService) {}
 
-  /**
-   * PRIVATE GET imdb_ids for the movies, the given user voted for
-   * @param user
-   */
+  @ApiOperation({ summary: &#x27;GET imdb_ids for the movies, the given user voted for&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
   async get_votes(@User() user: JwtUser): Promise&lt;string[]&gt; {
     return this.voteService.get_votes_user(Number(user.id));
   }
 
-  /**
-   * PUBLIC GET number of votes for a movie
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &#x27;GET number of votes for a movie&#x27; })
   @Get(&#x27;:imdb_id&#x27;)
   async get_vote(@Param(&#x27;imdb_id&#x27;) imdb_id: string) : Promise&lt;number&gt; {
     return this.voteService.get_votes(imdb_id);
   }
 
-  /**
-   * PRIVATE POST vote for a movie
-   * @param user
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &#x27;POST vote for a movie&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(&#x27;:imdb_id&#x27;)
   async save_vote(@User() user: JwtUser, @Param(&#x27;imdb_id&#x27;) imdb_id: string) : Promise&lt;Vote&gt; {
     return this.voteService.vote(imdb_id, Number(user.id));
   }
 
-  /**
-   * PRIVATE DELETE unvote for a movie
-   * @param user
-   * @param imdb_id
-   */
+  @ApiOperation({ summary: &#x27;DELETE unvote for a movie&#x27; })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(&#x27;:imdb_id&#x27;)
   async unvote(@User() user: JwtUser, @Param(&#x27;imdb_id&#x27;) imdb_id: string) : Promise&lt;Vote&gt; {

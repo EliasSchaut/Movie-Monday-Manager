@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -80,6 +80,11 @@
                             <li>
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
+                                <a href="#enabled" >enabled</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#webhookClient" >webhookClient</a>
                             </li>
                         </ul>
@@ -121,7 +126,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/common/util_services/discord.service.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/common/util_services/discord.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -156,8 +161,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/common/util_services/discord.service.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/common/util_services/discord.service.ts:15</a></div>
                 </td>
             </tr>
 
@@ -215,6 +220,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="enabled"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>enabled</b></span>
+                        <a href="#enabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.env.DISCORD_ENABLE &#x3D;&#x3D;&#x3D; &#x27;true&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/common/util_services/discord.service.ts:7</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="webhookClient"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -245,13 +277,19 @@ import { Injectable } from &quot;@nestjs/common&quot;;
 @Injectable()
 export class DiscordService {
   private readonly webhookClient;
+  private readonly enabled &#x3D; process.env.DISCORD_ENABLE &#x3D;&#x3D;&#x3D; &#x27;true&#x27;;
 
   constructor() {
-    this.webhookClient &#x3D; new WebhookClient({ url: process.env.DISCORD_WEBHOOK_URL as string });
+    if (this.enabled) {
+      this.webhookClient &#x3D; new WebhookClient({ url: process.env.DISCORD_WEBHOOK_URL as string });
+    }
   }
 
   async send_message(message: string) {
-    return this.webhookClient.send(message);
+    if (this.enabled) {
+      // @ts-ignore
+      return this.webhookClient.send(message);
+    }
   }
 }</code></pre>
     </div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -81,6 +81,11 @@
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#imdb" >imdb</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#max_proposeable_movies" >max_proposeable_movies</a>
                             </li>
                         </ul>
                     </td>
@@ -266,8 +271,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/routes/movie/movie.service.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">src/routes/movie/movie.service.ts:105</a></div>
                 </td>
             </tr>
 
@@ -459,8 +464,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">src/routes/movie/movie.service.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/routes/movie/movie.service.ts:138</a></div>
                 </td>
             </tr>
 
@@ -498,8 +503,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">src/routes/movie/movie.service.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/routes/movie/movie.service.ts:122</a></div>
                 </td>
             </tr>
 
@@ -530,7 +535,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>save(imdb_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, proposer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>save(imdb_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, proposer_id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -573,7 +578,7 @@
                                 <tr>
                                     <td>proposer_id</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                     </td>
 
                                     <td>
@@ -625,6 +630,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/routes/movie/movie.service.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="max_proposeable_movies"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>max_proposeable_movies</b></span>
+                        <a href="#max_proposeable_movies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Number(process.env.MAX_PROPOSEABLE_MOVIES)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/routes/movie/movie.service.ts:19</a></div>
                         </td>
                     </tr>
@@ -638,7 +670,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, Injectable, NotFoundException } from &quot;@nestjs/common&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ConflictException, ForbiddenException, Injectable, NotFoundException } from &quot;@nestjs/common&quot;;
 import { Client } from &quot;imdb-api&quot;;
 import { MovieDBService } from &quot;../../common/db_services/movies/movieDB.service&quot;;
 import { Prisma, User, Movie } from &quot;@prisma/client&quot;;
@@ -650,13 +682,13 @@ import { WatchListDBService } from &quot;../../common/db_services/watchlist/watc
 import { MovieExtType } from &quot;../../types/movie.types/movie_ext.type&quot;;
 import { WatchlistExtType } from &quot;../../types/movie.types/watchlist_ext.type&quot;;
 import { ResDto } from &quot;../../types/res.dto&quot;;
-
-
+import { imdb_id_pattern } from &quot;../../common/validation/patterns/imdb_id.pattern&quot;;
 
 @Injectable()
 export class MovieService {
 
   private readonly imdb: Client
+  private readonly max_proposeable_movies &#x3D; Number(process.env.MAX_PROPOSEABLE_MOVIES)
 
   constructor(private readonly movieDBService: MovieDBService,
               private readonly userDBService: UserDBService,
@@ -695,13 +727,26 @@ export class MovieService {
     }));
   }
 
-  async save(imdb_id: string, proposer_id: string) {
+  async save(imdb_id: string, proposer_id: number) {
+    if (!imdb_id_pattern.test(imdb_id)) {
+      throw new ForbiddenException(&#x27;Invalid imdb id. The id must start with tt and contain only numbers!&#x27;)
+    }
+
     if (await this.histroyDBService.has(imdb_id)) {
       throw new ConflictException(&#x27;Movie is already in history&#x27;)
     }
 
+    if (await this.movieDBService.has(imdb_id)) {
+      throw new ConflictException(&#x27;Movie is already in database&#x27;)
+    }
+
+    if ((await this.movieDBService.get_all_proposed(proposer_id)).length &gt;&#x3D; this.max_proposeable_movies) {
+      throw new ConflictException(&#x27;You have reached the maximum number of proposed movies! &#x27; +
+        &#x27;You can only propose &#x27; + this.max_proposeable_movies + &#x27; movies!&#x27;)
+    }
+
     const movie &#x3D; await this.get(imdb_id)
-    const { username } : Prisma.UserCreateInput &#x3D; await this.userDBService.get({id: Number(proposer_id)}) as User
+    const { username } : Prisma.UserCreateInput &#x3D; await this.userDBService.get({id: proposer_id}) as User
 
     const movieDB_data: Prisma.MovieCreateInput &#x3D; {
       imdb_id: imdb_id,
@@ -715,7 +760,7 @@ export class MovieService {
 
     try {
       return this.movieDBService.add(movieDB_data).then((movie) &#x3D;&gt; {
-        return this.voteService.vote(movie.imdb_id, Number(proposer_id))
+        return this.voteService.vote(movie.imdb_id, proposer_id)
           .then((vote) &#x3D;&gt; {
             return { movie, vote }
           })

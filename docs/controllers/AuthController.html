@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MoMoMa Backend Docs</title>
+        <title>MoMoMat Backend Docs</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">MoMoMa Backend Docs</a>
+            <a href="../" class="navbar-brand">MoMoMat Backend Docs</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -66,6 +66,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for authentication related routes</p>
+
+            </p>
 
 
 
@@ -143,14 +150,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;confirm/:challenge&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET confirm email address by providing user challenge&#x27;})<br />@Get(&#x27;confirm/:challenge&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="21"
-                            class="link-to-prism">src/routes/auth/auth.controller.ts:21</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/routes/auth/auth.controller.ts:35</a></div>
                 </td>
             </tr>
 
@@ -188,7 +195,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -213,7 +220,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>login(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>login(user: <a href="../interfaces/JwtUser.html" target="_self">JwtUser</a>, body: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
                 </td>
             </tr>
 
@@ -221,14 +228,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(LocalAuthGuard)<br />@Post(&#x27;login&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST issue jwt access token by providing username (email) and password&#x27;})<br />@UseGuards(LocalAuthGuard)<br />@Post(&#x27;login&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/routes/auth/auth.controller.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/routes/auth/auth.controller.ts:23</a></div>
                 </td>
             </tr>
 
@@ -249,9 +256,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>req</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="../interfaces/JwtUser.html" target="_self" >JwtUser</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>body</td>
+                                    <td>
+                                                <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
                                     </td>
 
                                     <td>
@@ -266,7 +285,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -291,7 +310,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>pw_reset(challenge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>pw_reset(challenge: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, body: <a href="../classes/PasswordDto.html" target="_self">PasswordDto</a>)</code>
                 </td>
             </tr>
 
@@ -299,14 +318,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;reset/:challenge&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST reset password by providing user challenge and new password&#x27;})<br />@Post(&#x27;reset/:challenge&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/routes/auth/auth.controller.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/routes/auth/auth.controller.ts:47</a></div>
                 </td>
             </tr>
 
@@ -339,9 +358,9 @@
 
                                 </tr>
                                 <tr>
-                                    <td>req</td>
+                                    <td>body</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="../classes/PasswordDto.html" target="_self" >PasswordDto</a></code>
                                     </td>
 
                                     <td>
@@ -356,7 +375,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -389,14 +408,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;reset/:username&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;GET request a password reset by providing an username (email)&#x27;})<br />@Get(&#x27;reset/:username&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/routes/auth/auth.controller.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/routes/auth/auth.controller.ts:41</a></div>
                 </td>
             </tr>
 
@@ -434,7 +453,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -459,7 +478,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>register(req: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>register(body: <a href="../classes/RegisterDto.html" target="_self">RegisterDto</a>)</code>
                 </td>
             </tr>
 
@@ -467,14 +486,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;register&#x27;)<br /></code>
+                    <code>@ApiOperation({summary: &#x27;POST register new user&#x27;})<br />@Post(&#x27;register&#x27;)<br /></code>
                 </td>
             </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/routes/auth/auth.controller.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/routes/auth/auth.controller.ts:29</a></div>
                 </td>
             </tr>
 
@@ -495,9 +514,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>req</td>
+                                    <td>body</td>
                                     <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                <code><a href="../classes/RegisterDto.html" target="_self" >RegisterDto</a></code>
                                     </td>
 
                                     <td>
@@ -512,7 +531,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>unknown</code>
+                        <b>Returns : </b>        <code><a href="../classes/ResDto.html" target="_self" >Promise&lt;ResDto&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -526,38 +545,54 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Request, Post, UseGuards, Get, Param } from &quot;@nestjs/common&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Post, UseGuards, Get, Param, Body } from &quot;@nestjs/common&quot;;
 import { LocalAuthGuard } from &#x27;./auth.guard&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
+import { JwtUser } from &quot;../../types/jwtuser.type&quot;;
+import { User } from &quot;../../common/decorators/user.decorator&quot;;
+import { PasswordDto } from &quot;../../types/user.dto/password.dto&quot;;
+import { RegisterDto } from &quot;../../types/user.dto/register.dto&quot;;
+import { ResDto } from &quot;../../types/res.dto&quot;;
+import { LoginDto } from &quot;../../types/user.dto/login.dto&quot;;
+import { ApiOperation, ApiTags } from &quot;@nestjs/swagger&quot;;
 
+/**
+ * Controller for authentication related routes
+ */
+@ApiTags(&#x27;auth&#x27;)
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @ApiOperation({ summary: &#x27;POST issue jwt access token by providing username (email) and password&#x27; })
   @UseGuards(LocalAuthGuard)
   @Post(&#x27;login&#x27;)
-  async login(@Request() req: any) {
-    return await this.authService.login(req.user);
+  async login(@User() user: JwtUser, @Body() body: LoginDto): Promise&lt;{access_token: string}&gt; {
+    return await this.authService.login(user);
   }
 
+  @ApiOperation({ summary: &#x27;POST register new user&#x27; })
   @Post(&#x27;register&#x27;)
-  async register(@Request() req: any) {
-    return await this.authService.register(req.body)
+  async register(@Body() body: RegisterDto): Promise&lt;ResDto&gt; {
+    return await this.authService.register(body)
   }
 
+  @ApiOperation({ summary: &#x27;GET confirm email address by providing user challenge&#x27; })
   @Get(&#x27;confirm/:challenge&#x27;)
-  async confirm(@Param(&#x27;challenge&#x27;) challenge: string) {
+  async confirm(@Param(&#x27;challenge&#x27;) challenge: string): Promise&lt;ResDto&gt; {
     return await this.authService.confirm(challenge)
   }
 
+  @ApiOperation({ summary: &#x27;GET request a password reset by providing an username (email)&#x27; })
   @Get(&#x27;reset/:username&#x27;)
-  async pw_reset_request(@Param(&#x27;username&#x27;) username: string) {
+  async pw_reset_request(@Param(&#x27;username&#x27;) username: string): Promise&lt;ResDto&gt; {
     return await this.authService.pw_reset_request(username)
   }
 
+  @ApiOperation({ summary: &#x27;POST reset password by providing user challenge and new password&#x27; })
   @Post(&#x27;reset/:challenge&#x27;)
-  async pw_reset(@Param(&#x27;challenge&#x27;) challenge: string, @Request() req: any) {
-    return await this.authService.pw_reset(challenge, req.body.password)
+  async pw_reset(@Param(&#x27;challenge&#x27;) challenge: string, @Body() body: PasswordDto): Promise&lt;ResDto&gt; {
+    return await this.authService.pw_reset(challenge, body.password)
   }
 }
 </code></pre>
