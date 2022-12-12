@@ -19,6 +19,9 @@
             <router-link class="nav-link" to="/privacy">Privacy</router-link>
           </li>
           <li>
+            <router-link class="nav-link" to="/docs">Docs</router-link>
+          </li>
+          <li>
             <a class="nav-link" href="https://github.com/EliasSchaut/Movie-Monday-Manager" target="_blank">GitHub</a>
           </li>
         </ul>
@@ -35,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { store } from './ts/store'
+import { store } from '@/util/store'
 </script>
 
 <script lang="ts">
