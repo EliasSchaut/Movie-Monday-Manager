@@ -1,6 +1,6 @@
 {
   "name": "movie-monday-manager",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "A website for adding and voting movies for the next watch party",
   "author": "EliasSchaut",
   "private": true,
@@ -44,6 +44,7 @@
     "helmet": "^5.1.1",
     "imdb-api": "^4.4.1",
     "joi": "^17.7.0",
+    "nestjs-i18n": "^10.1.0",
     "nodemailer": "^6.8.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",

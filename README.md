@@ -10,6 +10,7 @@ A full stack management application for voting movies for cyclic movie events.
 - users can manage own profile
 - clean and responsive Bootstrap-UI
 - 100% usable without client (via REST-API)
+- multi lang support (currently english and german)
 - automatic management of voted movies around movie events
 - automatic notifications for movie events with the list of interested users
 
@@ -23,6 +24,9 @@ A full stack management application for voting movies for cyclic movie events.
 
 ## Configuration
 The configuration file is located in the root directory of the project and is called ```.env```. It will be validated on startup via the [Joi](https://joi.dev/) library. To see the validation schema, see the [config.validation.ts](./src/common/validation/config.validation.ts) file.
+
+## Language
+This project support multiple languages and already has english _(en)_ and german _(de)_ implemented. The clients language is changeable via a html select element. The backend language reacts on the `Accept-Language` header. The localisation files are located in the `locales` folder in `src` of the different projects! To add a language, simply add a new localisation files in client and backend plus create a new option in the client select! The default language is always english! 
 
 ## API-Docs
 This project is 100% usable without client via a REST-API!
