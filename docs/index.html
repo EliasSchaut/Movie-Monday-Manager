@@ -42,6 +42,7 @@
 <li>users can manage own profile</li>
 <li>clean and responsive Bootstrap-UI</li>
 <li>100% usable without client (via REST-API)</li>
+<li>multi lang support (currently english and german)</li>
 <li>automatic management of voted movies around movie events</li>
 <li>automatic notifications for movie events with the list of interested users</li>
 </ul>
@@ -56,6 +57,8 @@
 </ol>
 <h2 id="configuration">Configuration</h2>
 <p>The configuration file is located in the root directory of the project and is called <code>.env</code>. It will be validated on startup via the <a href="https://joi.dev/">Joi</a> library. To see the validation schema, see the <a href="./src/common/validation/config.validation.ts">config.validation.ts</a> file.</p>
+<h2 id="language">Language</h2>
+<p>This project support multiple languages and already has english <em>(en)</em> and german <em>(de)</em> implemented. The clients language is changeable via a html select element. The backend language reacts on the <code>Accept-Language</code> header. The localisation files are located in the <code>locales</code> folder in <code>src</code> of the different projects! To add a language, simply add a new localisation files in client and backend plus create a new option in the client select! The default language is always english! </p>
 <h2 id="api-docs">API-Docs</h2>
 <p>This project is 100% usable without client via a REST-API!
 The routes start with the prefix <code>/api</code> (e.g. <code>http://[::1]:3000/api</code>). 

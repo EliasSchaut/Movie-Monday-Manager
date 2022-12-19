@@ -105,7 +105,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/routes/auth/local.strategy.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/routes/auth/local.strategy.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -170,8 +170,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/routes/auth/local.strategy.ts:12</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="14"
+                            class="link-to-prism">src/routes/auth/local.strategy.ts:14</a></div>
                 </td>
             </tr>
 
@@ -241,6 +241,8 @@
 import { PassportStrategy } from &#x27;@nestjs/passport&#x27;;
 import { Injectable, UnauthorizedException } from &#x27;@nestjs/common&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
+import { I18nContext } from &quot;nestjs-i18n&quot;;
+import { I18nTranslations } from &quot;../../types/generated/i18n.generated&quot;;
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
@@ -249,7 +251,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(username: string, password: string): Promise&lt;any&gt; {
-    const user &#x3D; await this.authService.validateUser(username, password);
+    const i18n &#x3D; I18nContext.current() as I18nContext&lt;I18nTranslations&gt;;
+    const user &#x3D; await this.authService.validateUser(username, password, i18n);
     if (!user) {
       throw new UnauthorizedException();
     }

@@ -203,6 +203,7 @@ import { VoteModule } from &#x27;./routes/vote/vote.module&#x27;;
 import { EventModule } from &quot;./common/event_service/event.module&quot;;
 import { ScheduleModule } from &quot;@nestjs/schedule&quot;;
 import { ConfigModule } from &quot;@nestjs/config&quot;;
+import { AcceptLanguageResolver, I18nModule } from &quot;nestjs-i18n&quot;;
 import { config_validation_schema } from &quot;./common/validation/config.validation&quot;;
 import { join } from &quot;path&quot;;
 
@@ -211,6 +212,17 @@ import { join } from &quot;path&quot;;
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: config_validation_schema
+    }),
+    I18nModule.forRoot({
+      fallbackLanguage: &#x27;en&#x27;,
+      loaderOptions: {
+        path: join(__dirname, &#x27;../src/locales&#x27;),
+        watch: true,
+      },
+      resolvers: [
+        AcceptLanguageResolver
+      ],
+      typesOutputPath: join(__dirname, &#x27;../src/types/generated/i18n.generated.ts&#x27;)
     }),
     AuthModule, UserModule, MovieModule, VoteModule, EventModule,
     ServeStaticModule.forRoot({
