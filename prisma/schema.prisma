@@ -10,6 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Settings {
+  id                  Int      @id @default(0)
+  init                Boolean  @default(false)
+  project_name        String   @default("My Movie Manager")
+  omdb_api_key        String
+  login_expiration    String   @default("7d")
+  max_votes           Int      @default(20)
+  max_proposals       Int      @default(4)
+  schedule_enabled    Boolean  @default(true)
+  schedule_watchlist  String   @default("0 15 * * 1")
+  schedule_start      String   @default("0 19 * * 1")
+  schedule_history    String   @default("45 23 * * 1")
+  pause_time_min      Int      @default(15)
+  num_of_movies       Int      @default(2)
+  discord_enabled     Boolean  @default(false)
+  discord_webhook_url String   @default("")
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+}
+
 model User {
   id           Int      @id @default(autoincrement())
   createdAt    DateTime @default(now())
@@ -22,6 +42,7 @@ model User {
   use_gravatar Boolean  @default(false)
   gravatar_url String?
   email_opt_in Boolean  @default(false)
+  is_admin     Boolean  @default(false)
   Movie        Movie[]
   Vote         Vote[]
 }
