@@ -1,5 +1,5 @@
 <template>
-<h1>Not Implemented yet!</h1>
+<h1>Not implemented yet!</h1>
 </template>
 
 <script lang="ts">

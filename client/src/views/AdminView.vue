@@ -1,6 +1,6 @@
 <template>
   <CardComponent id="card_admin" header="Admin Panel">
-    <TabComponent
+    <TabComponent :active="($route.params.tab !== '') ? $route.params.tab : 'settings'"
       :tabs="[
       {
         id: 'settings',
