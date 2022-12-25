@@ -10,6 +10,7 @@ import { ConfigModule } from "@nestjs/config";
 import { AcceptLanguageResolver, I18nModule } from "nestjs-i18n";
 import { config_validation_schema } from "./common/validation/config.validation";
 import { join } from "path";
+import { AdminModule } from "./routes/admin/admin.module";
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { join } from "path";
       ],
       typesOutputPath: join(__dirname, '../src/types/generated/i18n.generated.ts')
     }),
-    AuthModule, UserModule, MovieModule, VoteModule, EventModule,
+    AuthModule, UserModule, MovieModule, VoteModule, EventModule, AdminModule,
     ServeStaticModule.forRoot({
       serveRoot: '/docs/backend',
       rootPath: join(__dirname, '..', 'docs'),
