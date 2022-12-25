@@ -11,8 +11,9 @@ import FormComponent from "@/components/form/FormComponent.vue";
 import EmailComponent from "@/components/form/EmailComponent.vue";
 import PasswordComponent from "@/components/form/PasswordComponent.vue";
 import router from "@/router/router";
-import { set_cookie } from "@/util/cookie"
+import { get_cookie, set_cookie } from "@/util/cookie";
 import { call } from "@/util/api";
+import { store } from "@/util/store";
 
 export default {
   data() {
@@ -25,6 +26,20 @@ export default {
     callback(e: SubmitEvent, post: any, data: any) {
       if (data.hasOwnProperty("access_token")) {
         set_cookie("access_token", data.access_token);
+        try {
+          fetch('/api/user/check/admin', {
+            headers: {
+              "Authorization": "Bearer " +  (get_cookie("access_token") ?? ""),
+            }
+          }).then((res) => {
+            if (res.status === 200) {
+              store.is_admin = true;
+            }
+          })
+        } catch (e) {
+          console.log("no admin")
+        }
+
         router.push("/");
       } else if (data.hasOwnProperty("statusCode") && data.statusCode === 409) {
         return

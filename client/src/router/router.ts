@@ -72,12 +72,14 @@ router.beforeEach((to, from, next) => {
   if (to.path === "/logout") {
     remove_cookie("access_token");
     store.logged_in = false;
+    store.is_admin = false;
     router.go(0);
   }
   else if (get_cookie("access_token")) {
     store.update_logged_in().then(() => {
       if (!store.logged_in) {
         remove_cookie("access_token");
+        store.is_admin = false
       }
       next()
     })
