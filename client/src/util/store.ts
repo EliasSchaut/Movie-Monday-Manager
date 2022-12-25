@@ -3,6 +3,7 @@ import { get_cookie } from "@/util/cookie";
 
 export const store = reactive({
   logged_in: false,
+  is_admin: true,
   loading: false,
   alert: {
     show: false,

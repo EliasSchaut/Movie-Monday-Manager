@@ -15,6 +15,9 @@
           <li>
             <router-link class="nav-link" to="/history">{{ $t("nav.history") }}</router-link>
           </li>
+          <li v-if="store.is_admin">
+            <router-link class="nav-link" to="/admin">{{ $t("nav.admin") }}</router-link>
+          </li>
           <li>
             <router-link class="nav-link" to="/privacy">{{ $t("nav.privacy") }}</router-link>
           </li>
