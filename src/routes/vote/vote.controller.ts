@@ -1,5 +1,5 @@
 import { Controller, Delete, Get, Param, Post, UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
 import { VoteService } from "./vote.service";
 import { User } from "../../common/decorators/user.decorator";
 import { JwtUser } from "../../types/jwtuser.type";

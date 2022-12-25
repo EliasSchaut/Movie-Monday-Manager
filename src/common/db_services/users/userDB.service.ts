@@ -28,6 +28,10 @@ export class UserDBService {
     return this.prisma.user.findMany({ where: { email_opt_in: true } });
   }
 
+  async is_admin(user_id: number): Promise<boolean> {
+    return (await this.prisma.user.findUnique({ where: { id: user_id }, select: {is_admin: true} }) as User).is_admin;
+  }
+
   async create(data: Prisma.UserCreateInput): Promise<User> {
     data.password = await this.passwordService.hash(data.password);
     return this.prisma.user.create({ data });

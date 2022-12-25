@@ -143,4 +143,8 @@ export class UserService {
       throw new ForbiddenException(i18n.t("user.exception.forbidden_password"));
     }
   }
+
+  async is_admin(user_id: number): Promise<boolean> {
+    return await this.userDBService.is_admin(user_id);
+  }
 }

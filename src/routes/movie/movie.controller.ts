@@ -1,7 +1,7 @@
 import { Controller, Delete, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { MovieService } from "./movie.service";
-import { JwtAuthGuard } from "../auth/jwt-auth.guard";
+import { JwtAuthGuard } from "../../common/guards/jwt-auth.guard";
 import { User } from "../../common/decorators/user.decorator";
 import { JwtUser } from "../../types/jwtuser.type";
 import { MovieExtType } from "../../types/movie.types/movie_ext.type";

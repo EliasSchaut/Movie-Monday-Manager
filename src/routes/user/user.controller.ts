@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards, Post, Delete, Param, Body } from "@nestjs/common";
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { UserService } from "./user.service";
 import { User } from "../../common/decorators/user.decorator";
 import { JwtUser } from "../../types/jwtuser.type";
@@ -84,6 +84,14 @@ export class UserController {
   @Get('check')
   async check_profile() {
     return true;
+  }
+
+  @ApiOperation({ summary: 'GET check if bearer token is valid and user is admin' })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('check/admin')
+  async check_admin(@User() user: JwtUser) {
+    return await this.userService.is_admin(Number(user.id));
   }
 
   @ApiOperation({ summary: 'GET public user data from given user_id' })
