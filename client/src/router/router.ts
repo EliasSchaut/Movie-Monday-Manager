@@ -61,7 +61,7 @@ const router = createRouter({
       component: DocsView
     },
     {
-      path: '/admin',
+      path: '/admin/:tab?',
       name: 'admin',
       component: AdminView
     }

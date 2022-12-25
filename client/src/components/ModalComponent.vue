@@ -16,7 +16,7 @@
 
 <script lang="ts">
 export default {
-  name: "CardComponent",
+  name: "ModalComponent",
   props: {
     title: {
       type: String,
